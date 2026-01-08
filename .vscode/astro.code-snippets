@@ -162,11 +162,7 @@
   },
   "Tailwind Flex": {
     "prefix": "tflex",
-    "body": [
-      "<div class='flex ${1:flex-col} ${2:items-center} ${3:justify-center} gap-${4:4}'>",
-      "  $0",
-      "</div>"
-    ],
+    "body": ["<div class='flex ${1:flex-col} ${2:items-center} ${3:justify-center} gap-${4:4}'>", "  $0", "</div>"],
     "description": "Tailwind flex container"
   }
 }

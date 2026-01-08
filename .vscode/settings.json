@@ -43,13 +43,7 @@
   "javascript.preferences.quoteStyle": "single",
   // ESLint Settings
   "eslint.enable": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "astro"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "astro"],
   "eslint.format.enable": true,
   "eslint.workingDirectories": [
     {
@@ -59,29 +53,13 @@
   // Prettier Settings
   "prettier.requireConfig": true,
   "prettier.useEditorConfig": true,
-  "prettier.documentSelectors": [
-    "**/*.astro"
-  ],
+  "prettier.documentSelectors": ["**/*.astro"],
   // Tailwind CSS Settings
-  "tailwindCSS.classAttributes": [
-    "class",
-    "className",
-    "classList",
-    "ngClass"
-  ],
+  "tailwindCSS.classAttributes": ["class", "className", "classList", "ngClass"],
   "tailwindCSS.experimental.classRegex": [
-    [
-      "cva\\(([^)]*)\\)",
-      "[\"'`]([^\"'`]*).*?[\"'`]"
-    ],
-    [
-      "cx\\(([^)]*)\\)",
-      "(?:'|\"|`)([^']*)(?:'|\"|`)"
-    ],
-    [
-      "cn\\(([^)]*)\\)",
-      "(?:'|\"|`)([^']*)(?:'|\"|`)"
-    ]
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
   "tailwindCSS.includeLanguages": {
     "typescript": "javascript",
@@ -114,16 +92,7 @@
     "@": "${workspaceFolder}/src"
   },
   // Code Spell Checker Settings
-  "cSpell.words": [
-    "Astro",
-    "astro",
-    "shadcn",
-    "tailwindcss",
-    "clsx",
-    "pnpm",
-    "webmanifest",
-    "crossorigin"
-  ],
+  "cSpell.words": ["Astro", "astro", "shadcn", "tailwindcss", "clsx", "pnpm", "webmanifest", "crossorigin"],
   // Markdown Settings
   "markdown.extension.toc.updateOnSave": false,
   // Language-Specific Settings

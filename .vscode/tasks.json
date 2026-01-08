@@ -42,9 +42,7 @@
       "script": "lint",
       "label": "eslint: lint",
       "detail": "Run ESLint on the project",
-      "problemMatcher": [
-        "$eslint-stylish"
-      ],
+      "problemMatcher": ["$eslint-stylish"],
       "presentation": {
         "reveal": "always",
         "panel": "shared"
@@ -55,9 +53,7 @@
       "script": "lint:fix",
       "label": "eslint: fix",
       "detail": "Run ESLint and auto-fix issues",
-      "problemMatcher": [
-        "$eslint-stylish"
-      ],
+      "problemMatcher": ["$eslint-stylish"],
       "presentation": {
         "reveal": "always",
         "panel": "shared"
@@ -67,10 +63,7 @@
       "label": "astro: check",
       "type": "shell",
       "command": "pnpm",
-      "args": [
-        "astro",
-        "check"
-      ],
+      "args": ["astro", "check"],
       "detail": "Check Astro project for errors",
       "problemMatcher": [],
       "presentation": {
@@ -88,10 +81,7 @@
     {
       "label": "Full Clean & Rebuild",
       "dependsOrder": "sequence",
-      "dependsOn": [
-        "clean",
-        "astro: build"
-      ],
+      "dependsOn": ["clean", "astro: build"],
       "problemMatcher": []
     }
   ]

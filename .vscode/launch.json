@@ -35,18 +35,13 @@
       "name": "Chrome: Debug",
       "url": "http://localhost:4321",
       "webRoot": "${workspaceFolder}",
-      "skipFiles": [
-        "<node_internals>/**"
-      ]
+      "skipFiles": ["<node_internals>/**"]
     }
   ],
   "compounds": [
     {
       "name": "Dev + Chrome",
-      "configurations": [
-        "Astro: Dev Server",
-        "Chrome: Debug"
-      ],
+      "configurations": ["Astro: Dev Server", "Chrome: Debug"],
       "stopAll": true,
       "preLaunchTask": null
     }
