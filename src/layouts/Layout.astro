@@ -1,8 +1,10 @@
 ---
-import { ClientRouter } from 'astro:transitions'
 import '@/styles/global.css'
-import HeadSeo from '@/components/HeadSeo.astro'
-import { Navbar } from '@/components/blocks/navbar'
+
+import { ClientRouter } from 'astro:transitions'
+
+import HeadSeo from '@/layouts/HeadSeo.astro'
+import { Header } from '@/components/layout/header'
 
 interface Props {
   title?: string
@@ -26,6 +28,26 @@ const seoProps = Astro.props as Props
   <head>
     <HeadSeo {...seoProps} />
     <ClientRouter />
+    <script is:inline>
+      ;(function () {
+        const getTheme = () => {
+          if (typeof localStorage !== 'undefined') {
+            const stored = localStorage.getItem('theme')
+            if (stored === 'light' || stored === 'dark') {
+              return stored
+            }
+          }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+
+        const theme = getTheme()
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+      })()
+    </script>
     <style>
       /* Disable all view transitions while keeping client-side navigation */
       ::view-transition-group(*),
@@ -35,16 +57,13 @@ const seoProps = Astro.props as Props
       }
     </style>
   </head>
-  <body class='flex min-h-screen w-full flex-auto flex-col antialiased'>
-    <!-- Skip to main content for accessibility -->
-    <a
-      href='#main-content'
-      class='focus:bg-primary focus:text-primary-foreground sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:px-4 focus:py-2'
-    >
-      Skip to main content
-    </a>
+  <body class='flex min-h-full w-full flex-auto flex-col'>
+    <div class='flex flex-col'>
+      <Header client:load />
 
-    <Navbar client:load />
-    <slot />
+      <main class='flex flex-col *:scroll-mt-15.5'><slot /></main>
+
+      <!-- <Footer client:load /> -->
+    </div>
   </body>
 </html>

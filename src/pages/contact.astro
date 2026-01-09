@@ -7,27 +7,8 @@ const pageDescription =
   'Create lightning-fast, SEO-optimized websites with our Astro template featuring shadcn/ui components and Tailwind CSS. Perfect for developers building modern web applications.'
 const pageKeywords =
   'astro template, shadcn ui, tailwind css, react components, seo optimized, web development, static site generator, modern web apps'
-
-// Structured data for better SEO
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebApplication',
-  name: 'Master Astro Template',
-  description: pageDescription,
-  applicationCategory: 'DeveloperApplication',
-  operatingSystem: 'Any',
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD'
-  },
-  author: {
-    '@type': 'Organization',
-    name: 'Your Company Name'
-  }
-}
 ---
 
-<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} schema={schema}>
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords}>
   <!--  All Sections -->
 </Layout>

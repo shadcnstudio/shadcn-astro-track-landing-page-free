@@ -1,5 +1,5 @@
 import { COMPANY_INFO } from '@/consts'
-import ThemeToggle from '@/components/theme-toggle'
+import ThemeToggle from '@/components/layout/theme-toggle'
 
 // Navigation configuration
 const ITEMS = [
@@ -10,7 +10,7 @@ const ITEMS = [
   { label: 'Register', href: '/register' }
 ]
 
-export const Navbar = () => {
+export const Header = () => {
   return (
     <header className='sticky top-0 z-50 w-full border-b bg-gray-50 dark:bg-gray-900' role='banner'>
       <div className='container mx-auto flex items-center justify-between px-4 py-6'>
