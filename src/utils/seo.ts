@@ -108,6 +108,7 @@ export function generateFAQSchema(faqs: Array<{ question: string; answer: string
  */
 export function truncateText(text: string, maxLength: number): string {
   if (text.length <= maxLength) return text
+
   return text.substring(0, maxLength - 3) + '...'
 }
 
@@ -117,8 +118,10 @@ export function truncateText(text: string, maxLength: number): string {
 export function generateMetaDescription(content: string, maxLength = 160): string {
   // Remove HTML tags
   const textOnly = content.replace(/<[^>]*>/g, '')
+
   // Remove extra whitespace
   const cleaned = textOnly.replace(/\s+/g, ' ').trim()
+
   return truncateText(cleaned, maxLength)
 }
 
@@ -163,6 +166,7 @@ export function extractKeywords(content: string, count = 10): string {
 
   // Count word frequency
   const wordFreq = new Map<string, number>()
+
   words.forEach(word => {
     if (word.length > 3 && !stopWords.has(word)) {
       wordFreq.set(word, (wordFreq.get(word) || 0) + 1)

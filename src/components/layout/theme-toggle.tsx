@@ -5,47 +5,14 @@ import { Moon, Sun } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 function ThemeToggle() {
-  const [theme, setTheme] = React.useState<'light' | 'dark'>('light')
-
-  // On mount, set theme from localStorage or system preference
-  React.useEffect(() => {
-    let initial: 'light' | 'dark' = 'light'
-
-    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
-      const stored = localStorage.getItem('theme') as 'light' | 'dark' | null
-
-      if (stored === 'light' || stored === 'dark') {
-        initial = stored
-      } else {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-
-        initial = prefersDark ? 'dark' : 'light'
-      }
+  const [theme, setTheme] = React.useState<'light' | 'dark'>(() => {
+    // Read initial theme from DOM (already set by blocking script)
+    if (typeof document !== 'undefined') {
+      return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
     }
 
-    setTheme(initial)
-    document.documentElement.classList[initial === 'dark' ? 'add' : 'remove']('dark')
-
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('theme', initial)
-    }
-
-    // Observe class changes to update localStorage
-    let observer: MutationObserver | undefined
-
-    if (typeof localStorage !== 'undefined') {
-      observer = new MutationObserver(() => {
-        const isDark = document.documentElement.classList.contains('dark')
-
-        localStorage.setItem('theme', isDark ? 'dark' : 'light')
-      })
-      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-    }
-
-    return () => {
-      if (observer) observer.disconnect()
-    }
-  }, [])
+    return 'light'
+  })
 
   // Update theme class and localStorage when theme changes
   React.useEffect(() => {

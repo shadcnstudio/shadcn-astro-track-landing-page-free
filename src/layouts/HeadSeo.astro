@@ -1,5 +1,5 @@
 ---
-import { SITE_METADATA, SITE_URL } from '@/consts'
+import { SITE_METADATA } from '@/consts'
 
 interface Props {
   title?: string
@@ -155,4 +155,5 @@ const schemaData = schema || defaultSchema
 <meta name='theme-color' content='#0a0a0a' media='(prefers-color-scheme: dark)' />
 
 <!-- Structured Data (JSON-LD) -->
+{/* eslint-disable-next-line astro/no-set-html-directive */}
 <script type='application/ld+json' set:html={JSON.stringify(schemaData)} />
