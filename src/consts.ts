@@ -1,17 +1,16 @@
 // Site Configuration
 // Centralized configuration for site metadata, SEO, and branding
 
-export const SITE_TITLE = 'shadcn Studio - Modern Astro Template'
+export const SITE_TITLE = 'Track - Changelog Landing Page | Shadcn Studio'
 export const SITE_DESCRIPTION =
-  'Build lightning-fast, SEO-optimized websites with our professional Astro template featuring shadcn/ui components, Tailwind CSS, and modern best practices.'
+  'A clean, centralized page that highlights product updates, improvements, and fixes so users can quickly see what’s new.'
 
-export const GITHUB_URL = 'https://github.com/yourusername/master-shadcn-astro'
-export const SITE_URL = 'https://shadcnstudio.com/'
+export const GITHUB_URL = 'https://github.com/yourusername/shadcn-astro-track-landing-page'
+export const SITE_URL = 'https://shadcn-astro-track-landing-page.vercel.app/'
 
 export const SITE_METADATA = {
   title: {
-    default: 'shadcn Studio - Modern Astro Template',
-    template: '%s | shadcn Studio'
+    default: 'Demo: Track - Changelog Landing Page | Shadcn Studio'
   },
   description:
     'A professional Astro template built with shadcn/ui, Tailwind CSS & React. Optimized for performance and SEO. Open source - MIT License.',
