@@ -1,7 +1,7 @@
 {
-  "name": "shadcn Studio - Modern Astro Template",
-  "short_name": "shadcn Studio",
-  "description": "Build lightning-fast, SEO-optimized websites with Astro, shadcn/ui, and Tailwind CSS",
+  "name": "Track - Changelog Landing Page | Shadcn Studio",
+  "short_name": "Track",
+  "description": "A clean, centralized page that highlights product updates, improvements, and fixes so users can quickly see what’s new.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -17,14 +17,27 @@
     {
       "src": "/favicon/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "/favicon/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
     }
   ],
   "screenshots": [
@@ -40,25 +53,7 @@
       "name": "Home",
       "short_name": "Home",
       "description": "Go to homepage",
-      "url": "/",
-      "icons": [
-        {
-          "src": "/favicon/android-chrome-192x192.png",
-          "sizes": "192x192"
-        }
-      ]
-    },
-    {
-      "name": "Blog",
-      "short_name": "Blog",
-      "description": "Read our blog",
-      "url": "/blog",
-      "icons": [
-        {
-          "src": "/favicon/android-chrome-192x192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "url": "/"
     }
   ]
 }
