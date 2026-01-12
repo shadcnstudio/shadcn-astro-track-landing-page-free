@@ -1,13 +1,17 @@
-'use client'
-
 import * as React from 'react'
 import { MoonStarIcon, SunIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 function ThemeToggle() {
   const [theme, setTheme] = React.useState<'light' | 'dark'>(() => {
-    // Read initial theme from DOM (already set by blocking script)
-    if (typeof document !== 'undefined') {
+    // Read initial theme from localStorage first, then DOM
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('theme')
+
+      if (stored === 'light' || stored === 'dark') {
+        return stored
+      }
+
       return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
     }
 
