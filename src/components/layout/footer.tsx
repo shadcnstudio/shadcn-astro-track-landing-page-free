@@ -1,6 +1,6 @@
 import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from 'lucide-react'
 
-import { navigationData } from '@/assets/data/navigation'
+import { navigationData } from '@/components/sections/navigation'
 
 import Logo from '@/components/logo'
 

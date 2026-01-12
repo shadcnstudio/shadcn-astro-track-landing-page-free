@@ -1,6 +1,6 @@
 import TimelineItem from '@/components/timeline/timeline-items'
 import Accordion from '@/components/badge-accordion/badge-accordion'
-import { accordionDataV1_3_0 } from '@/assets/data/changelog-data'
+import { accordionDataV1_3_0 } from '@/components/sections/changelog-data'
 
 function v1_3_0() {
   return (
@@ -22,7 +22,7 @@ function v1_3_0() {
               <li>Automatically resolve dependency conflicts</li>
             </ul>
           </div>
-          <img src='/src/assets/images/image-1.webp' alt='Component Sync Demo' loading='lazy' />
+          <img src='/images/image-1.webp' alt='Component Sync Demo' loading='lazy' />
           <Accordion data={accordionDataV1_3_0} />
         </div>
       </TimelineItem>
