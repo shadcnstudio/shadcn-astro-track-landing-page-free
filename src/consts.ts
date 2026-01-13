@@ -1,7 +1,7 @@
 // Site Configuration
 // Centralized configuration for site metadata, SEO, and branding
 
-export const SITE_TITLE = 'Track - Changelog Landing Page | Shadcn Studio'
+export const SITE_TITLE = 'Demo:Track - Changelog Landing Page | Shadcn Studio'
 export const SITE_DESCRIPTION =
   'A clean, centralized page that highlights product updates, improvements, and fixes so users can quickly see what’s new.'
 
@@ -55,8 +55,8 @@ export const SITE_METADATA = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'shadcn Studio',
-    title: 'shadcn Studio - Modern Astro Template',
+    siteName: 'Track',
+    title: 'Track - Changelog Landing Page',
     description:
       'A professional Astro template built with shadcn/ui, Tailwind CSS & React. Optimized for performance and SEO.',
     images: [
@@ -64,7 +64,7 @@ export const SITE_METADATA = {
         url: '/images/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'shadcn Studio - Modern Astro Template',
+        alt: 'Track - Changelog Landing Page',
         type: 'image/png'
       }
     ]
@@ -73,7 +73,7 @@ export const SITE_METADATA = {
     card: 'summary_large_image',
     site: '@shadcnstudio',
     creator: '@shadcnstudio',
-    title: 'shadcn Studio - Modern Astro Template',
+    title: 'Track - Changelog Landing Page',
     description:
       'A professional Astro template built with shadcn/ui, Tailwind CSS & React. Optimized for performance and SEO.',
     images: ['/images/og-image.png']
