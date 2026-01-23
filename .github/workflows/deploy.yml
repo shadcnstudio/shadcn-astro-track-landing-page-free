@@ -1,6 +1,5 @@
 name: Deploy - Demos
 run-name: ${{ github.ref_name == 'main' && '🚀' || '🧪' }} Deploy - Demos
-
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
@@ -9,132 +8,38 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  deployment:
     runs-on: ubuntu-latest
     steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v4
-
-      - name: 📦 Setup pnpm
+      - name: ⚙️ Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: latest
+          version: 9
 
-      - name: 📦 Setup Node.js
-        uses: actions/setup-node@v4
+      - name: ⬇️ Checkout current repo
+        uses: actions/checkout@v4
         with:
-          node-version: '22'
-          cache: 'pnpm'
+          path: shadcn-studio/${{ github.event.repository.name }}
 
-      - name: 📦 Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: ⬇️ Checkout automation-scripts repo
+        uses: actions/checkout@v4
+        with:
+          repository: themeselection/automation-scripts
+          token: ${{ secrets.GH_PAT }}
+          path: automation-scripts
 
-      - name: 🤖 Configure for demo deployment
-        run: |
-          echo "🤖 Configuring site for demo deployment..."
+      - name: ⬇️ Install packages in automation-scripts dir
+        working-directory: automation-scripts/nextjs
+        run: pnpm i
 
-          # Set production site URL
-          SITE_URL="https://shadcn-astro-track-landing-page.vercel.app/"
-          echo "🌐 Setting site URL to: $SITE_URL"
+      - name: ⬇️ Install packages in current repo
+        working-directory: shadcn-studio/${{ github.event.repository.name }}
+        run: pnpm i
 
-          # Update astro.config.mjs site URL
-          sed -i.bak "s|site: 'http://localhost:4321/'|site: '$SITE_URL'|g" astro.config.mjs
-
-          # Update all localhost URLs in astro.config.mjs (for sitemap)
-          sed -i.bak "s|http://localhost:4321/|$SITE_URL|g" astro.config.mjs
-
-          # Update SITE_URL in consts.ts
-          sed -i.bak "s|export const SITE_URL = 'https://shadcnstudio.com/'|export const SITE_URL = '$SITE_URL'|g" src/consts.ts
-
-          # Update robots.txt sitemap URL reference if present
-          sed -i.bak "s|https://yourdomain.com/|$SITE_URL|g" public/robots.txt
-
-          # Update consts.ts to set robots to noindex, nofollow (temporary, only in CI)
-          sed -i.bak "s/index: true/index: false/g" src/consts.ts
-          sed -i.bak "s/follow: true/follow: false/g" src/consts.ts
-
-          # Replace robots.txt with demo version (temporary, only in CI)
-          cat > public/robots.txt << 'ROBOTS'
-          # robots.txt for Demo/Staging Environment
-          # Automatically generated during deployment to prevent indexing
-
-          User-agent: *
-          Disallow: /
-
-          # Block all major search engines
-          User-agent: Googlebot
-          Disallow: /
-
-          User-agent: Bingbot
-          Disallow: /
-
-          User-agent: Slurp
-          Disallow: /
-
-          User-agent: DuckDuckBot
-          Disallow: /
-
-          User-agent: Baiduspider
-          Disallow: /
-
-          User-agent: YandexBot
-          Disallow: /
-          ROBOTS
-
-          echo "✅ Configuration updated (temporary for this deployment only)"
-          echo "📄 Verifying configurations:"
-          echo "Site URL in astro.config.mjs:"
-          grep "site:" astro.config.mjs || echo "URL applied"
-          echo "Site URL in consts.ts:"
-          grep "SITE_URL" src/consts.ts || echo "URL applied"
-
-      - name: 🏗️ Build Astro project
-        run: pnpm run build
-
-      - name: 📦 Prepare Vercel prebuilt output
-        run: |
-          echo "📦 Creating Vercel Build Output API structure..."
-
-          # Create .vercel/output directory structure
-          mkdir -p .vercel/output/static
-
-          # Copy all build files to static directory
-          cp -r dist/* .vercel/output/static/
-
-          # Create config.json for Vercel Build Output API v3
-          cat > .vercel/output/config.json << 'EOF'
-          {
-            "version": 3,
-            "routes": [
-              {
-                "handle": "filesystem"
-              }
-            ]
-          }
-          EOF
-
-          echo "✅ Vercel prebuilt output ready"
-          echo "📁 Output structure:"
-          ls -la .vercel/output/
-          echo "📄 Files in static:"
-          ls -la .vercel/output/static/ | head -10
+      - name: 📦 Build
+        working-directory: automation-scripts/nextjs
+        run: pnpm install vercel && pnpm tsx ./src/shadcn-studio/template/generateBuild.ts $([[ "${{ github.ref_name == 'main' }}" == "true" ]] && echo --prod) --vercel-token ${{ secrets.VERCEL_TOKEN }} --repo-name ${{ github.event.repository.name }}
 
       - name: 🚀 Deploy to Vercel
-        run: |
-          # Install Vercel CLI
-          pnpm add -g vercel@latest
-
-          # Link to Vercel project
-          echo "🔗 Linking to Vercel project..."
-          pnpm exec vercel link --yes --token ${{ secrets.VERCEL_TOKEN }}
-
-          # Deploy based on branch
-          if [[ "${{ github.ref_name }}" == "main" ]]; then
-            echo "🚀 Deploying to Production..."
-            pnpm exec vercel deploy --prod --prebuilt --token ${{ secrets.VERCEL_TOKEN }} --yes
-          else
-            echo "🧪 Deploying to Preview (${{ github.ref_name }})..."
-            pnpm exec vercel deploy --prebuilt --token ${{ secrets.VERCEL_TOKEN }} --yes
-          fi
-
-          echo "✅ Deployment completed successfully!"
+        working-directory: shadcn-studio/${{ github.event.repository.name }}
+        run: pnpm install -w vercel && pnpm exec vercel $([[ "${{ github.ref_name == 'main' }}" == "true" ]] && echo --prod) --prebuilt --token ${{ secrets.VERCEL_TOKEN }}
