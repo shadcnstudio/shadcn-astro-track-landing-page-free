@@ -25,8 +25,62 @@ const blogData = allPosts.map(post => ({
 
 const pageTitle = 'Blog'
 const pageDescription = 'Read our latest articles about web development, Astro, and modern web technologies.'
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    // Blog schema
+    {
+      '@type': 'Blog',
+      '@id': `${Astro.site}blog/#blog`,
+      name: 'Shadcn Studio Blog',
+      description: pageDescription,
+      url: `${Astro.site}blog/`,
+      inLanguage: 'en-US',
+      publisher: {
+        '@type': 'Organization',
+        name: 'Shadcn Studio',
+        logo: {
+          '@type': 'ImageObject',
+          url: `${Astro.site}images/site-logo.png`
+        }
+      },
+      blogPost: blogData.map(post => ({
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.description,
+        image: {
+          '@type': 'ImageObject',
+          url: new URL(post.imageUrl, Astro.site).toString()
+        },
+        datePublished: post.pubDate,
+        author: {
+          '@type': 'Person',
+          name: post.author
+        },
+        url: `${Astro.site}blog/${post.slug}/`,
+        keywords: post.tags?.join(', '),
+        articleSection: post.category
+      }))
+    },
+
+    // WebPage schema
+    {
+      '@type': 'WebPage',
+      '@id': `${Astro.site}blog/#webpage`,
+      url: `${Astro.site}blog/`,
+      name: pageTitle,
+      description: pageDescription,
+      inLanguage: 'en-US',
+      isPartOf: {
+        '@type': 'WebSite',
+        '@id': `${Astro.site}#website`
+      }
+    }
+  ]
+}
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout title={pageTitle} description={pageDescription} schema={schema}>
   <Blog blogData={blogData} client:load />
 </Layout>

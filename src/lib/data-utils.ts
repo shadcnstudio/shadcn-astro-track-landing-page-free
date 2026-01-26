@@ -6,12 +6,12 @@ export async function getAllPosts(): Promise<CollectionEntry<'blog'>[]> {
   return posts.sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
 }
 
-export async function getAdjacentPosts(currentId: string): Promise<{
+export async function getAdjacentPosts(currentSlug: string): Promise<{
   newer: CollectionEntry<'blog'> | null
   older: CollectionEntry<'blog'> | null
 }> {
   const allPosts = await getAllPosts()
-  const currentIndex = allPosts.findIndex(post => post.id === currentId)
+  const currentIndex = allPosts.findIndex(post => post.data.slug === currentSlug)
 
   if (currentIndex === -1) {
     return { newer: null, older: null }
@@ -23,9 +23,9 @@ export async function getAdjacentPosts(currentId: string): Promise<{
   }
 }
 
-export async function getTOCHeadings(postId: string): Promise<{ slug: string; text: string; depth: number }[]> {
+export async function getTOCHeadings(postSlug: string): Promise<{ slug: string; text: string; depth: number }[]> {
   const posts = await getCollection('blog')
-  const post = posts.find(p => p.id === postId)
+  const post = posts.find(p => p.data.slug === postSlug)
 
   if (!post) return []
 

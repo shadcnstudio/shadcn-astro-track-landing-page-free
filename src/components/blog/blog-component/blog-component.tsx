@@ -201,7 +201,7 @@ const Blog = ({ blogData = [] }: BlogProps) => {
             {filteredPosts.length > 0 ? (
               <BlogGrid posts={filteredPosts} onCategoryClick={handleTabChange} />
             ) : (
-              <div className='text-muted-foreground flex min-h-[400px] flex-col items-center justify-center space-y-4 rounded-lg border border-dashed p-8 text-center'>
+              <div className='text-muted-foreground flex min-h-100 flex-col items-center justify-center space-y-4 rounded-lg border border-dashed p-8 text-center'>
                 <SearchIcon className='size-12 opacity-50' />
                 <div className='space-y-2'>
                   <h3 className='text-foreground text-lg font-medium'>No posts found</h3>
@@ -229,7 +229,7 @@ const Blog = ({ blogData = [] }: BlogProps) => {
                   onCategoryClick={handleTabChange}
                 />
               ) : (
-                <div className='text-muted-foreground flex min-h-[400px] flex-col items-center justify-center space-y-4 rounded-lg border border-dashed p-8 text-center'>
+                <div className='text-muted-foreground flex min-h-100 flex-col items-center justify-center space-y-4 rounded-lg border border-dashed p-8 text-center'>
                   <SearchIcon className='size-12 opacity-50' />
                   <div className='space-y-2'>
                     <h3 className='text-foreground text-lg font-medium'>No posts found</h3>
