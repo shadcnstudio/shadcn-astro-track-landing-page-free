@@ -178,7 +178,7 @@ The template comes with several pre-configured scripts to help you with developm
 
 | Command       | Action                                                                                                                                 |
 | :------------ | :------------------------------------------------------------------------------------------------------------------------------------- |
-| `dev`         | Starts the Astro development server with hot-reload enabled. Your application will be available at http://localhost:4321.build         |
+| `dev`         | Starts the Astro development server with hot-reload enabled. Your application will be available at http://localhost:4321/              |
 | `build`       | Creates an optimized production build of your application. This command generates static files and optimizes your code for deployment. |
 | `preview`     | Preview production site locally. Use this to test your production build locally before deploying.                                      |
 | `lint`        | Runs ESLint to check your code for potential errors and code quality issues. This helps maintain clean and consistent code.            |
