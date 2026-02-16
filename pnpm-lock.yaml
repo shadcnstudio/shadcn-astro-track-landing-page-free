@@ -30,13 +30,13 @@ importers:
         specifier: ^4.1.18
         version: 4.1.18(vite@6.4.1(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2))
       '@types/react':
-        specifier: ^19.2.7
+        specifier: ^19.2.14
         version: 19.2.14
       '@types/react-dom':
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.14)
       astro:
-        specifier: ^5.16.12
+        specifier: ^5.17.2
         version: 5.17.2(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
       class-variance-authority:
         specifier: ^0.7.1
@@ -51,13 +51,13 @@ importers:
         specifier: latest
         version: 1.4.3(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       react:
-        specifier: ^19.2.3
+        specifier: ^19.2.4
         version: 19.2.4
       react-dom:
-        specifier: ^19.2.3
+        specifier: ^19.2.4
         version: 19.2.4(react@19.2.4)
       tailwind-merge:
-        specifier: ^3.4.0
+        specifier: ^3.4.1
         version: 3.4.1
       tailwindcss:
         specifier: ^4.1.18
