@@ -160,6 +160,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
@@ -221,11 +222,11 @@
   @apply size-10;
 }
 
-[data-slot="button"][data-size="lg"]:not(.px-6){
+[data-slot='button'][data-size='lg']:not(.px-6) {
   @apply px-4;
 }
 
-[data-slot="button"][data-size="default"]:not(.px-6){
+[data-slot='button'][data-size='default']:not(.px-6) {
   @apply px-3;
 }
 
