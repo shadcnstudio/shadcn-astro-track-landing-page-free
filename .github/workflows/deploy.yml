@@ -25,9 +25,10 @@ jobs:
           path: automation-scripts
 
       - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
-          version: latest
+          version: 10
+
       - name: ⬇️ Install packages in automation-scripts dir
         working-directory: automation-scripts/astro
         run: pnpm install
