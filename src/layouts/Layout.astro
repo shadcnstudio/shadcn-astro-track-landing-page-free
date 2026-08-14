@@ -7,6 +7,8 @@ import HeadSeo from '@/layouts/HeadSeo.astro'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 
+import DownloadButton from '@/components/layout/Download'
+
 import { navigationData } from '@/components/sections/header'
 
 interface Props {
@@ -75,6 +77,8 @@ const seoProps = Astro.props as Props
         <slot />
       </main>
       <Footer />
+
+      <DownloadButton />
     </div>
   </body>
 </html>
